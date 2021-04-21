@@ -1,0 +1,23 @@
+{% extends 'posts/base.html'%}
+{% load static %}
+
+
+{% block content %}
+
+<div class = container>
+<div class = row>
+  {% for p in profile %}
+  <div class="card ml-2" style="width: 18rem;">
+    <img class="card-img-top" src="{{p.image.url}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{p.name}} {{p.surname}}</h5>
+      <p class="card-text"> {{p.bio|truncatechars:60}}</p>
+      <a href="" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+
+
+{% endblock content %}

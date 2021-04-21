@@ -1,0 +1,87 @@
+{% extends 'posts/base.html'%}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class = container>
+<div class = row>
+{% for object in object_list %}
+  
+  
+  {% if object.title_bold %}
+<small>
+<div class="card text-white bg-info ml-2 mb-2">
+    <h5 class="card-title">
+    <a href="{% url 'posts:postdetail' object.slug %}">
+    {{ object.title }} 
+    </a>
+    - {{ object.post_create }}
+    </h5>
+    <p class="card-text">{{ object.description }}</p>
+    <p class="card-text">{{ object.author }}</p>
+    <p class="card-text">{{ object.category_1 }} {{ object.category_2 }} {{ object.category_3 }}</p>
+    <p class="card-text">{{ object.price }} USD</p>
+    <img class="card-img" src="..." alt="Card image">
+</div>
+</small>
+{% elif object.title_colored %}
+<small>
+ <div class="card text-white bg-danger ml-2 mb-2">
+    <h5 class="card-title">
+    <a href="{% url 'posts:postdetail' object.slug %}">
+    {{ object.title }} 
+    </a>
+    - {{ object.post_create }}
+    </h5>
+    <p class="card-text">{{ object.description }}</p>
+    <p class="card-text">{{ object.author }}</p>
+    <p class="card-text">{{ object.category_1 }} {{ object.category_2 }} {{ object.category_3 }}</p>
+    <p class="card-text">{{ object.price }} USD</p>
+    <img class="card-img" src="..." alt="Card image">
+</div>
+</small>
+{% elif object.border %}
+<small>
+ <div class="card text-white bg-warning ml-2 mb-2">
+    <h5 class="card-title">
+    <a href="{% url 'posts:postdetail' object.slug %}">
+    {{ object.title }} 
+    </a>
+    - {{ object.post_create }}
+    </h5>
+    <p class="card-text">{{ object.description }}</p>
+    <p class="card-text">{{ object.author }}</p>
+    <p class="card-text">{{ object.category_1 }} {{ object.category_2 }} {{ object.category_3 }}</p>
+    <p class="card-text">{{ object.price }} USD</p>
+    <img class="card-img" src="..." alt="Card image">
+</div>
+</small>
+{% else %}
+<small>
+<div class="card bg-light ml-2 mb-2">
+    <h5 class="card-title">
+    <a href="{% url 'posts:postdetail' object.slug %}">
+    {{ object.title }} 
+    </a>
+    - {{ object.post_create }}
+    </h5>
+    <p class="card-text">{{ object.description }}</p>
+    <p class="card-text">{{ object.author }}</p>
+    <p class="card-text">{{ object.category_1 }} {{ object.category_2 }} {{ object.category_3 }}</p>
+    <p class="card-text">{{ object.price }} USD</p>
+    <img class="card-img" src="..." alt="Card image">
+</div>
+</small>
+{% endif %}
+    {% empty %}
+    No objects yet.
+    {% endfor %}
+
+</div>
+</div>
+
+
+{% endblock content %}
+
