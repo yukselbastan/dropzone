@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'posts',
     'django_extensions',
 ]
@@ -127,10 +126,25 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#I have fiddled with your variable arrangement :) I find it easier to read if its all organised.
+#Make your STATIFILES_DIRS a list
+#Django docs sre here : https://docs.djangoproject.com/en/3.2/ref/settings/#std:setting-STATICFILES_DIRS
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'media'),
+    ]
+
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+#I've also changed your media root config...
+#Your code was not incorrent. I've just made it more in-keeping with the static config :)
+#Note: Study up of handeling static & media files...It taks a while to understand.
+#You may not fully understand the 'whats and whys' until you launch your first project
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = 'mediafiles'
 
 LOGIN_REDIRECT_URL = 'dropzone:index'
+
+APPEND_SLASH=False

@@ -1,9 +1,25 @@
 {% extends 'posts/base.html'%}
 {% load static %}
 
+{% block extend_head %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'dropzone-5.7.0/dist/basic.css' %}">  
+<link rel="stylesheet" type="text/css" href="{% static 'dropzone-5.7.0/dist/dropzone.css' %}">
+
+{% endblock %}
+
 {% block content %}
 <div class=container>
-    <form id="post_form" method="post" action="" enctype="multipart/form-data">
+
+    <label for="dropzone">Profile images</label> <!--This is all taken from my GitHub repo-->
+    <form action="/dropzone-image" id="DidDropzone" class="dropzone" accept-charset="UTF-8" method="POST">
+        {% csrf_token %}
+        <div class="dz-message">Click Here or Drop Files Here To Upload - 500kb maximum (0.5mb)</div>
+    </form>  
+    <br>  
+    <button disabled hidden id="image-btn" type="submit" >Add images</button>  <!--hidden submit button to trigger dropzone-->
+
+    <form id="post_form" method="post" action="/postcreate/" enctype="multipart/form-data"> <!--Added postcreate to action for AJAX call-->
     {% csrf_token %}
         {{form.as_p}}
     <br>
@@ -12,3 +28,11 @@
 </div>
 <br>
 {% endblock content %}
+
+
+{% block extend_footer %} <!-- We are extending the block in our base.html file -->
+
+<script src="{% static 'dropzone-5.7.0/dist/dropzone.js' %}"></script> <!-- I have added dropzone js files to static dir-->
+<script src="{% static 'dropzone.js' %}"></script> <!--This is the dropzone.js fril from my GitHub repo-->
+
+{% endblock %}

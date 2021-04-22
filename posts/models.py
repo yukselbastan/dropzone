@@ -40,7 +40,7 @@ class Profile(models.Model):
         return str(self.user.username  + ' - ' + self.name  + ' ' + self.surname)
 
 
-class Post(models.Model):
+class Listing(models.Model):
 
     is_active = models.BooleanField(default=True)
     title = models.CharField(max_length=100)

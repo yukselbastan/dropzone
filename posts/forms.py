@@ -1,13 +1,13 @@
 from django import forms
 from .models import (
-        Post, 
+        Listing, 
     )
 
 class CreatePostForm(forms.ModelForm):
     
     class Meta:
-        model = Post
-        fields = [
+        model = Listing
+        fields = (
         'title',
         'notes',
         'category_1',
@@ -19,4 +19,4 @@ class CreatePostForm(forms.ModelForm):
         'title_colored',
         'border',
         'keywords',
-        ] 
+        )
